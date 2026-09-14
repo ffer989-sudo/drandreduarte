@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. André Duarte - Endocrinologista em Campinas</title>
-    <meta name="description" content="Consultório de Endocrinologia e Metabologia do Dr. André Duarte em Campinas - SP. Tratamento de obesidade, tireoide, diabetes e bioimpedância InBody. Agende sua consulta.">
+    <meta name="description" content="Consultório de Endocrinologia e Metabologia do Dr. André Duarte em Campinas - SP. Especialista em obesidade, tireoide e diabetes com bioimpedância InBody incluída.">
     
     <!-- Dados Estruturados (SEO Local / Schema.org) -->
     <script type="application/ld+json">
@@ -87,21 +87,69 @@
             border-bottom: 2px solid #e9ecef;
             padding-bottom: 8px;
         }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
+        .destaques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
         }
-        ul li {
-            padding: 8px 0;
-            position: relative;
-            padding-left: 20px;
+        .destaque-card {
+            background: #f8f9fa;
+            border-left: 4px solid #0077b6;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        ul li::before {
-            content: "✓";
-            color: #0077b6;
-            position: absolute;
-            left: 0;
+        .destaque-card h3 {
+            font-size: 1.1rem;
+            color: #03045e;
+            margin-bottom: 8px;
+        }
+        .destaque-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+        .depoimento {
+            background: #eef4f8;
+            border-left: 4px solid #023e8a;
+            padding: 20px;
+            border-radius: 6px;
+            font-style: italic;
+            margin-top: 15px;
+            color: #333;
+        }
+        .depoimento span {
+            display: block;
+            margin-top: 10px;
             font-weight: bold;
+            font-style: normal;
+            font-size: 0.9rem;
+            color: #0077b6;
+        }
+        /* Formulário de Avaliação */
+        .form-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #e9ecef;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
         }
         .btn {
             display: inline-block;
@@ -111,7 +159,8 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            margin-top: 15px;
+            border: none;
+            cursor: pointer;
             transition: background 0.3s;
         }
         .btn:hover {
@@ -133,22 +182,58 @@
         <p>Endocrinologista e Metabologista • CRM-SP 163454</p>
     </header>
 
-    <!-- Seção Sobre / Especialidades -->
+    <!-- Seção Sobre / Destaques -->
     <section id="sobre">
         <h2>Sobre o Especialista</h2>
-        <p>Atendimento médico humanizado, focado em escuta ativa, clareza e explicações detalhadas. Nosso objetivo é ajudar você a entender seu corpo, cuidar da saúde hormonal e conquistar mais qualidade de vida com acompanhamento individualizado.</p>
+        <p>Atendimento médico humanizado, focado em escuta ativa, clareza e investigações a fundo para detectar a real causa do problema antes de iniciar o tratamento.</p>
         
-        <h3 style="margin-top: 25px; color: #333; font-size: 1.2rem;">Áreas de Atuação:</h3>
-        <ul style="margin-top: 10px;">
-            <li>Tratamento de Obesidade e Emagrecimento</li>
-            <li>Doenças da Tireoide</li>
-            <li>Diabetes e Distúrbios Metabólicos</li>
-            <li>Saúde Hormonal</li>
-        </ul>
+        <!-- Blocos de Destaque -->
+        <div class="destaques-grid">
+            <div class="destaque-card">
+                <h3>🎯 Áreas de Foco</h3>
+                <p>Especialista em obesidade, tireoide e diabetes, unindo excelência clínica e saúde metabólica.</p>
+            </div>
+            <div class="destaque-card">
+                <h3>🎓 Formação Sólida</h3>
+                <p>Graduação e residência médica em Endocrinologia pela PUCC (Pontifícia Universidade Católica de Campinas).</p>
+            </div>
+            <div class="destaque-card">
+                <h3>⚖️ Bioimpedância InBody</h3>
+                <p>Consultas presenciais contam com exame de bioimpedância InBody completo já incluído no atendimento.</p>
+            </div>
+        </div>
 
-        <p style="margin-top: 20px;"><strong>Diferencial Presencial:</strong> Consultas com avaliação por Bioimpedância InBody inclusa.</p>
-        <p><strong>Modalidades:</strong> Atendimento Presencial e Telemedicina.</p>
+        <p style="margin-top: 20px;"><strong>Modalidades:</strong> Atendimento Presencial e Telemedicina.</p>
         <p><strong>Convênios e Planos:</strong> Particular (R$ 500) e Unimed.</p>
+
+        <!-- Seção de Depoimentos -->
+        <h3 style="margin-top: 35px; color: #0077b6; font-size: 1.4rem;">O que dizem os pacientes</h3>
+        
+        <!-- Container onde os depoimentos vão aparecer -->
+        <div id="lista-depoimentos">
+            <div class="depoimento">
+                "Médico muito atencioso, paciente e detalhista. Conduz investigação a fundo para detectar real causa do problema antes de iniciar tratamento."
+                <span>— Avaliação de Paciente</span>
+            </div>
+        </div>
+
+        <!-- Formulário interativo para deixar avaliação direto no site -->
+        <div class="form-box">
+            <h3 style="margin-bottom: 10px; color: #0077b6; font-size: 1.2rem;">Deixe sua avaliação</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">Sua opinião é muito importante. Compartilhe sua experiência:</p>
+            
+            <form id="formAvaliacao" onsubmit="adicionarAvaliacao(event)">
+                <div class="form-group">
+                    <label for="nomePaciente">Seu Nome:</label>
+                    <input type="text" id="nomePaciente" placeholder="Ex: Maria Silva" required>
+                </div>
+                <div class="form-group">
+                    <label for="textoAvaliacao">Sua Mensagem / Avaliação:</label>
+                    <textarea id="textoAvaliacao" rows="3" placeholder="Escreva como foi sua experiência com o atendimento..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Publicar Avaliação</button>
+            </form>
+        </div>
     </section>
 
     <!-- Seção de Localização e Contato com SEO Local -->
@@ -187,6 +272,42 @@
     <footer>
         <p>&copy; 2026 Dr. André Duarte • CRM-SP 163454. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Script JavaScript para lidar com as avaliações direto na tela e salvar na memória -->
+    <script>
+        // Carrega avaliações salvas ao abrir a página
+        document.addEventListener("DOMContentLoaded", () => {
+            const salvo = localStorage.getItem("avaliacoesDrAndre");
+            if (salvo) {
+                document.getElementById("lista-depoimentos").innerHTML = salvo;
+            }
+        });
+
+        function adicionarAvaliacao(event) {
+            event.preventDefault(); // Evita recarregar a página
+
+            const nome = document.getElementById("nomePaciente").value.trim();
+            const texto = document.getElementById("textoAvaliacao").value.trim();
+
+            if (!nome || !texto) return;
+
+            // Cria o elemento visual do novo depoimento
+            const container = document.getElementById("lista-depoimentos");
+            const novoDepoimento = document.createElement("div");
+            novoDepoimento.className = "depoimento";
+            novoDepoimento.innerHTML = `"${texto}"<span>— ${nome} (Paciente)</span>`;
+
+            // Adiciona no topo da lista
+            container.prepend(novoDepoimento);
+
+            // Salva no armazenamento local do navegador para não sumir ao atualizar
+            localStorage.setItem("avaliacoesDrAndre", container.innerHTML);
+
+            // Limpa o formulário e avisa o usuário
+            document.getElementById("formAvaliacao").reset();
+            alert("Obrigado! Sua avaliação foi publicada com sucesso no site.");
+        }
+    </script>
 
 </body>
 </html>
