@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Agentes Online - TV</title>
+    <style>
+        body {
+            background: #121212;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #00ffcc;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1e1e1e;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        th {
+            background: #252525;
+            color: #00ffcc;
+            padding: 14px;
+            text-align: center;
+        }
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .loading {
+            text-align: center;
+            color: #aaa;
+            font-size: 18px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Painel de Agentes Online - TV</h1>
+    <div id="painel-conteudo" class="loading">Carregando agentes...</div>
+
+    <script>
+        // COLE SEU TOKEN BEARER AQUI ENTRE AS ASPAS
+        const TOKEN_BEARER = "EAI5-OADH-gwgB-2sCk-Hvnu-h8m4-dXRB-zCGk"; 
+
+        async function atualizarPainelTV() {
+            try {
+                const resposta = await fetch("https://desktop.matrixdobrasil.ai/rest/v2/agentesOnline", {
+                    method: "GET",
+                    headers: { 
+                        "accept": "application/json",
+                        "Authorization": `Bearer ${TOKEN_BEARER}`
+                    }
+                });
+                
+                const resJson = await resposta.json();
+                
+                // Valida se o token foi aceito
+                if (resJson.success === false) {
+                    throw new Error(resJson.message || "Erro de autenticação");
+                }
+
+                let lista = resJson.result || resJson.dados || [];
+
+                let html = `<table>
+                    <thead>
+                        <tr>
+                            <th>Agente</th>
+                            <th>Status</th>
+                            <th>Tipo Status</th>
+                            <th>Início do Status</th>
+                            <th>Tempo Logado</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                    
+                if (lista.length > 0) {
+                    lista.forEach(agente => {
+                        let nome = agente.nome || agente.agentName || agente.dsNome || agente.descricao || agente.usuario || agente.nmAgente || 'Agente';
+
+                        let statusObj = agente.status || agente.ds_status || agente.situacao || null;
+                        let statusTexto = 'Em atendimento';
+                        let tipoStatus = '--';
+                        let datStatus = '--';
+                        let tempoLogado = '--';
+
+                        if (statusObj && typeof statusObj === 'object') {
+                            if (statusObj.cod_pausa && statusObj.cod_pausa !== "") {
+                                statusTexto = `Pausa (Cód: ${statusObj.cod_pausa})`;
+                            } else {
+                                statusTexto = 'Em atendimento';
+                            }
+                            tipoStatus = statusObj.cod_agente_tipo_status ? `Tipo ${statusObj.cod_agente_tipo_status}` : '--';
+                            datStatus = statusObj.dat_status || '--';
+                            tempoLogado = statusObj.tempo_logado || '--';
+                        } else {
+                            tempoLogado = agente.tempo_logado || '--';
+                        }
+                        
+                        html += `<tr>
+                            <td style="color:#fff; font-weight:bold;">${nome}</td>
+                            <td style="color:${statusTexto.includes('Pausa') ? '#ffaa00' : '#00ffcc'}; font-weight:bold;">${statusTexto}</td>
+                            <td style="color:#ddd;">${tipoStatus}</td>
+                            <td style="color:#aaa;">${datStatus}</td>
+                            <td style="color:#bbb; font-weight:bold;">${tempoLogado}</td>
+                        </tr>`;
+                    });
+                } else {
+                    html += `<tr><td colspan="5" style="padding:20px; text-align:center;">Nenhum agente retornado no momento.</td></tr>`;
+                }
+                html += `</tbody></table>`;
+                
+                document.getElementById("painel-conteudo").innerHTML = html;
+            } catch (e) {
+                console.error(e);
+                document.getElementById("painel-conteudo").innerHTML = `<p style='color:red;'>Erro ao carregar dados: ${e.message}. Verifique o Token Bearer no código.</p>`;
+            }
+        }
+
+        // Executa ao carregar e atualiza a cada 30 segundos
+        atualizarPainelTV();
+        setInterval(atualizarPainelTV, 30000);
+    </script>
+</body>
+</html>
