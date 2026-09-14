@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. André Duarte - Cardiologista em Campinas</title>
-    <meta name="description" content="Consultório de Cardiologia do Dr. André Duarte em Campinas - SP. Atendimento particular e convênios. Agende sua consulta.">
+    <title>Dr. André Duarte - Endocrinologista em Campinas</title>
+    <meta name="description" content="Consultório de Endocrinologia e Metabologia do Dr. André Duarte em Campinas - SP. Tratamento de obesidade, tireoide, diabetes e bioimpedância InBody. Agende sua consulta.">
     
-    <!-- Dados Estruturados (SEO Local / Schema.org) para ranqueamento no Google -->
+    <!-- Dados Estruturados (SEO Local / Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
-      "name": "Consultório Dr. André Duarte",
+      "name": "Dr. André Duarte - Endocrinologista",
       "image": "https://ffer989-sudo.github.io/drandreduarte/img/foto-perfil.jpg",
-      "@id": "https://ffer989-sudo.github.io/drandreduarte/",
-      "url": "https://ffer989-sudo.github.io/drandreduarte/",
-      "priceRange": "$$",
+      "@id": "https://drandreduarte.com.br/",
+      "url": "https://drandreduarte.com.br/",
+      "telephone": "+551933970007",
+      "priceRange": "R$ 500",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "R. Visc. de Taunay, 420 - Vila Itapura",
+        "streetAddress": "R. Visc. de Taunay, 420 - Sala 26, Vila Itapura",
         "addressLocality": "Campinas",
         "addressRegion": "SP",
         "postalCode": "13015-093",
@@ -41,7 +42,7 @@
         "opens": "08:00",
         "closes": "18:00"
       },
-      "medicalSpecialty": "Cardiology"
+      "medicalSpecialty": "Endocrinology"
     }
     </script>
 
@@ -52,38 +53,55 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
             background-color: #f4f7f6;
         }
         header {
-            background-color: #0077b6;
+            background: linear-gradient(135deg, #0077b6, #03045e);
             color: white;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
         }
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 2.4rem;
+            margin-bottom: 5px;
         }
         header p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.9;
         }
         section {
-            padding: 50px 20px;
+            padding: 40px 20px;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: white;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         h2 {
             color: #0077b6;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-size: 1.8rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        ul li::before {
+            content: "✓";
+            color: #0077b6;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
         .btn {
             display: inline-block;
@@ -102,7 +120,7 @@
         footer {
             text-align: center;
             padding: 20px;
-            color: #77b6;
+            color: #666;
             font-size: 0.9rem;
         }
     </style>
@@ -112,26 +130,37 @@
     <!-- Cabeçalho Principal -->
     <header>
         <h1>Dr. André Duarte</h1>
-        <p>Cardiologista • CRM/SP Especializado</p>
+        <p>Endocrinologista e Metabologista • CRM-SP 163454</p>
     </header>
 
-    <!-- Seção Sobre / Apresentação -->
+    <!-- Seção Sobre / Especialidades -->
     <section id="sobre">
         <h2>Sobre o Especialista</h2>
-        <p>Bem-vindo ao site oficial do Dr. André Duarte. Oferecemos atendimento cardiológico humanizado, focado na prevenção, diagnóstico precoce e tratamento de doenças cardiovasculares, unindo excelência técnica e cuidado individualizado.</p>
-        <p style="margin-top: 15px;"><strong>Atendimento:</strong> Particular e Convênio Unimed.</p>
+        <p>Atendimento médico humanizado, focado em escuta ativa, clareza e explicações detalhadas. Nosso objetivo é ajudar você a entender seu corpo, cuidar da saúde hormonal e conquistar mais qualidade de vida com acompanhamento individualizado.</p>
+        
+        <h3 style="margin-top: 25px; color: #333; font-size: 1.2rem;">Áreas de Atuação:</h3>
+        <ul style="margin-top: 10px;">
+            <li>Tratamento de Obesidade e Emagrecimento</li>
+            <li>Doenças da Tireoide</li>
+            <li>Diabetes e Distúrbios Metabólicos</li>
+            <li>Saúde Hormonal</li>
+        </ul>
+
+        <p style="margin-top: 20px;"><strong>Diferencial Presencial:</strong> Consultas com avaliação por Bioimpedância InBody inclusa.</p>
+        <p><strong>Modalidades:</strong> Atendimento Presencial e Telemedicina.</p>
+        <p><strong>Convênios e Planos:</strong> Particular (R$ 500) e Unimed.</p>
     </section>
 
     <!-- Seção de Localização e Contato com SEO Local -->
     <section id="localizacao" style="text-align: center;">
-        <h2 style="color: #0077b6; margin-bottom: 10px;">Onde Estamos</h2>
+        <h2>Onde Estamos</h2>
         <p style="font-size: 1.1rem; color: #555; margin-bottom: 25px;">
-            Venha nos visitar em nosso consultório localizado em Campinas.
+            Consultório estruturado para receber você com conforto e segurança em Campinas.
         </p>
 
         <!-- Endereço em Texto -->
         <div style="margin-bottom: 20px; font-size: 1.05rem; color: #333;">
-            📍 <strong>R. Visc. de Taunay, 420 - Vila Itapura</strong><br>
+            📍 <strong>R. Visc. de Taunay, 420 - Sala 26, Vila Itapura</strong><br>
             <span>Campinas - SP, 13015-093</span>
         </div>
         
@@ -156,7 +185,7 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Dr. André Duarte. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Dr. André Duarte • CRM-SP 163454. Todos os direitos reservados.</p>
     </footer>
 
 </body>
