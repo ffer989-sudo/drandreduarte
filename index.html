@@ -3,133 +3,644 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Agentes Online - TV</title>
+    <title>Dr. André Duarte | Endocrinologista em Campinas</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
-            background: #121212;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            padding: 20px;
+        :root {
+            --primary: #0f172a;       /* Azul Marinho Profundo */
+            --primary-light: #1e293b;  /* Azul Marinho Intermediário */
+            --gold: #b89753;          /* Dourado Elegante */
+            --gold-light: #d4af37;    /* Dourado Brilho */
+            --gold-bg: #fdfbf7;       /* Fundo Levemente Dourado/Areia */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --whatsapp: #25d366;
+            --instagram: #E1306C;
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
-        h1 {
-            color: #00ffcc;
-            text-align: center;
-            margin-bottom: 20px;
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
         }
-        table {
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
-            background: #1e1e1e;
-            margin-top: 10px;
-            font-size: 15px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
         }
-        th {
-            background: #252525;
-            color: #00ffcc;
-            padding: 14px;
-            text-align: center;
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #333;
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
         }
-        .loading {
+
+        nav a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--gold-light);
+        }
+
+        .cta-btn {
+            background-color: var(--gold);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .wa-btn {
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .wa-btn:hover {
+            background-color: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 5rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(184, 151, 83, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .hero-badge span i {
+            color: var(--gold-light);
+            margin-right: 0.4rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184, 151, 83, 0.3);
+            padding: 2.5rem 2.2rem;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             text-align: center;
-            color: #aaa;
-            font-size: 18px;
-            margin-top: 40px;
+            max-width: 420px;
+            width: 100%;
+        }
+
+        /* Foto Bem Maior no Hero */
+        .hero-avatar {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .hero-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-card p {
+            color: var(--gold-light);
+            font-size: 1.05rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .specialties-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: white;
+            border: 1px solid var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .profile-card-visual {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold);
+        }
+
+        .profile-real-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .social-link-ig {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--instagram);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .social-link-ig:hover {
+            opacity: 0.8;
+        }
+
+        /* Services & Conditions */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: var(--transition);
+            border-top: 4px solid var(--gold);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Locations & Contact / Values */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold-bg);
+            border: 1px solid var(--gold);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .contact-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-right: 80px;
+        }
+
+        .contact-box p {
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-box p i {
+            margin-top: 4px;
+            color: var(--gold);
+        }
+
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Floating WhatsApp Widget */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            border-top: 3px solid var(--gold);
+        }
+
+        footer p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+            .hero-badge {
+                justify-content: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            nav ul {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Painel de Agentes Online - TV</h1>
-    <div id="painel-conteudo" class="loading">Carregando agentes...</div>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-stethoscope"></i> Dr. André Duarte
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#atendimento">Atendimento</a></li>
+                <li><a href="https://www.instagram.com/dr.andreduarte?stkn=MW5kd2psNDVybHFiaQ==" target="_blank"><i class="fa-brands fa-instagram" style="color: var(--gold-light);"></i></a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/5519993963800?text=Olá%20Dr.%20André,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="wa-btn">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+    </header>
 
-    <script>
-        // COLE SEU TOKEN BEARER AQUI ENTRE AS ASPAS
-        const TOKEN_BEARER = "EAI5-OADH-gwgB-2sCk-Hvnu-h8m4-dXRB-zCGk"; 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Endocrinologista & Metabolismo</span>
+            <h1>Cuidando da sua saúde hormonal e bem-estar</h1>
+            <p>Atendimento humanizado focado em obesidade, metabolismo, tireoide e diabetes. Consulta Particular ou Unimed (Presencial em Campinas e Telemedicina).</p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/5519993963800?text=Olá%20Dr.%20André,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="wa-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Marcar via WhatsApp
+                </a>
+                <a href="https://www.doctoralia.com.br/andre-luis-moreira-duarte/endocrinologista-medico-clinico-geral-especialista-em-clinica-medica/campinas" target="_blank" class="cta-btn">
+                    <i class="fa-regular fa-calendar-check"></i> Ver na Doctoralia
+                </a>
+            </div>
 
-        async function atualizarPainelTV() {
-            try {
-                const resposta = await fetch("https://desktop.matrixdobrasil.ai/rest/v2/agentesOnline", {
-                    method: "GET",
-                    headers: { 
-                        "accept": "application/json",
-                        "Authorization": `Bearer ${TOKEN_BEARER}`
-                    }
-                });
-                
-                const resJson = await resposta.json();
-                
-                // Valida se o token foi aceito
-                if (resJson.success === false) {
-                    throw new Error(resJson.message || "Erro de autenticação");
-                }
+            <div class="hero-badge">
+                <span><i class="fa-solid fa-id-card"></i> CRM-SP 163454</span>
+                <span><i class="fa-solid fa-award"></i> RQE 81257 / 81256</span>
+            </div>
+        </div>
+        <div class="hero-card">
+            <img src="https://pixel-p1.s3.sa-east-1.amazonaws.com/doctor/avatar/a7289efa/a7289efa-a75f-4be6-82b2-5d4a06924a15_large.jpg" alt="Dr. André Duarte" class="hero-avatar">
+            <h3>Dr. André Duarte</h3>
+            <p>Endocrinologista</p>
+            <a href="https://www.doctoralia.com.br/andre-luis-moreira-duarte/endocrinologista-medico-clinico-geral-especialista-em-clinica-medica/campinas" target="_blank" class="cta-btn" style="display: block; width: 100%; text-align: center; justify-content: center;">Perfil Doctoralia</a>
+        </div>
+    </section>
 
-                let lista = resJson.result || resJson.dados || [];
+    <!-- Sobre Mim -->
+    <section id="sobre">
+        <div class="section-title">
+            <h2>Sobre o Médico</h2>
+            <p>Compromisso com a medicina acolhedora e baseada em evidências</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Sou médico endocrinologista e cuido de pessoas que querem melhorar a saúde, o metabolismo e o bem-estar de forma segura e orientada.</p>
+                <p>Acredito que um bom atendimento começa com atenção, escuta ativa e explicações claras. Meu objetivo é ajudar você a entender melhor o seu corpo, gerenciar o peso e conquistar metas duradouras.</p>
+                <div class="specialties-tags">
+                    <span class="tag">Obesidade</span>
+                    <span class="tag">Metabolismo</span>
+                    <span class="tag">Tireoide</span>
+                    <span class="tag">Diabetes</span>
+                    <span class="tag">Particular e Unimed</span>
+                </div>
+            </div>
+            <div>
+                <div class="profile-card-visual">
+                    <img src="https://pixel-p1.s3.sa-east-1.amazonaws.com/doctor/avatar/a7289efa/a7289efa-a75f-4be6-82b2-5d4a06924a15_large.jpg" alt="Dr. André Duarte" class="profile-real-img">
+                    <h3 style="margin-bottom: 0.2rem; color: var(--primary);">Dr. André Duarte</h3>
+                    <p style="color: var(--gold); font-weight: 600; font-size: 0.9rem;">Endocrinologista & Clínico Geral</p>
+                    <p style="color: var(--gray); font-size: 0.85rem; margin-top: 0.2rem;">Campinas/SP & Telemedicina</p>
+                    <a href="https://www.instagram.com/dr.andreduarte?stkn=MW5kd2psNDVybHFiaQ==" target="_blank" class="social-link-ig">
+                        <i class="fa-brands fa-instagram"></i> @dr.andreduarte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                let html = `<table>
-                    <thead>
-                        <tr>
-                            <th>Agente</th>
-                            <th>Status</th>
-                            <th>Tipo Status</th>
-                            <th>Início do Status</th>
-                            <th>Tempo Logado</th>
-                        </tr>
-                    </thead>
-                    <tbody>`;
-                    
-                if (lista.length > 0) {
-                    lista.forEach(agente => {
-                        let nome = agente.nome || agente.agentName || agente.dsNome || agente.descricao || agente.usuario || agente.nmAgente || 'Agente';
+    <!-- Especialidades / Tratamentos -->
+    <section id="especialidades" style="background: #f8fafc;">
+        <div class="section-title">
+            <h2>Áreas de Atuação & Condições</h2>
+            <p>Principais áreas de acompanhamento especializado</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-weight-scale"></i>
+                <h3>Obesidade & Emagrecimento</h3>
+                <p>Tratamento clínico estruturado para controle de peso, ronco, saciedade e melhora da composição corporal.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-fire"></i>
+                <h3>Metabolismo</h3>
+                <p>Avaliação completa de distúrbios metabólicos, ganho de massa, disposição e performance com segurança.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-dna"></i>
+                <h3>Tireoide</h3>
+                <p>Diagnóstico e acompanhamento rigoroso de hipotireoidismo, hipertireoidismo e nódulos tireoidianos.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>Diabetes</h3>
+                <p>Manejo clínico atualizado do Diabetes Tipo 1 e 2, prevenção de complicações e controle glicêmico.</p>
+            </div>
+        </div>
+    </section>
 
-                        let statusObj = agente.status || agente.ds_status || agente.situacao || null;
-                        let statusTexto = 'Em atendimento';
-                        let tipoStatus = '--';
-                        let datStatus = '--';
-                        let tempoLogado = '--';
+    <!-- Locais de Atendimento & Valores -->
+    <section id="atendimento">
+        <div class="section-title">
+            <h2>Modalidades, Convênios & Valores</h2>
+            <p>Atendimento Particular (R$ 500) ou Unimed em Campinas e por Telemedicina</p>
+        </div>
+        <div class="contact-container">
+            <!-- Consulta Presencial -->
+            <div class="contact-box">
+                <div class="price-tag">R$ 500</div>
+                <div>
+                    <h3><i class="fa-solid fa-location-dot"></i> Consulta Presencial</h3>
+                    <p><i class="fa-solid fa-building"></i> <strong>Clínica Duarte</strong><br>Rua Visconde de Taunay, 420, Campinas - SP</p>
+                    <p><i class="fa-solid fa-user-check"></i> <strong>Convênio / Particular:</strong> Atendimento Particular ou Unimed.</p>
+                    <p><i class="fa-solid fa-weight-scale"></i> Consulta médica com avaliação de composição corporal por bioimpedância profissional (InBody) inclusa.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/5519993963800?text=Olá%20Dr.%20André,%20gostaria%20de%20agendar%20uma%20consulta%20presencial." target="_blank" class="wa-btn" style="justify-content: center;">
+                        <i class="fa-brands fa-whatsapp"></i> Marcar Presencial (WhatsApp)
+                    </a>
+                    <a href="https://www.doctoralia.com.br/andre-luis-moreira-duarte/endocrinologista-medico-clinico-geral-especialista-em-clinica-medica/campinas" target="_blank" class="cta-btn" style="justify-content: center; background-color: var(--primary);">
+                        Ver na Doctoralia
+                    </a>
+                </div>
+            </div>
 
-                        if (statusObj && typeof statusObj === 'object') {
-                            if (statusObj.cod_pausa && statusObj.cod_pausa !== "") {
-                                statusTexto = `Pausa (Cód: ${statusObj.cod_pausa})`;
-                            } else {
-                                statusTexto = 'Em atendimento';
-                            }
-                            tipoStatus = statusObj.cod_agente_tipo_status ? `Tipo ${statusObj.cod_agente_tipo_status}` : '--';
-                            datStatus = statusObj.dat_status || '--';
-                            tempoLogado = statusObj.tempo_logado || '--';
-                        } else {
-                            tempoLogado = agente.tempo_logado || '--';
-                        }
-                        
-                        html += `<tr>
-                            <td style="color:#fff; font-weight:bold;">${nome}</td>
-                            <td style="color:${statusTexto.includes('Pausa') ? '#ffaa00' : '#00ffcc'}; font-weight:bold;">${statusTexto}</td>
-                            <td style="color:#ddd;">${tipoStatus}</td>
-                            <td style="color:#aaa;">${datStatus}</td>
-                            <td style="color:#bbb; font-weight:bold;">${tempoLogado}</td>
-                        </tr>`;
-                    });
-                } else {
-                    html += `<tr><td colspan="5" style="padding:20px; text-align:center;">Nenhum agente retornado no momento.</td></tr>`;
-                }
-                html += `</tbody></table>`;
-                
-                document.getElementById("painel-conteudo").innerHTML = html;
-            } catch (e) {
-                console.error(e);
-                document.getElementById("painel-conteudo").innerHTML = `<p style='color:red;'>Erro ao carregar dados: ${e.message}. Verifique o Token Bearer no código.</p>`;
-            }
-        }
+            <!-- Telemedicina -->
+            <div class="contact-box">
+                <div class="price-tag">R$ 500</div>
+                <div>
+                    <h3><i class="fa-solid fa-laptop-medical"></i> Teleconsulta / Online</h3>
+                    <p><i class="fa-solid fa-video"></i> Atendimento por vídeo com total comodidade e segurança para todo o Brasil.</p>
+                    <p><i class="fa-solid fa-user-check"></i> <strong>Convênio / Particular:</strong> Atendimento Particular ou Unimed.</p>
+                    <p><i class="fa-regular fa-clock"></i> Indicada para avaliação, acompanhamento, revisão de exames e ajuste de tratamentos sem sair de casa.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/5519993963800?text=Olá%20Dr.%20André,%20gostaria%20de%20agendar%20uma%20telemedicina%20(consulta%20online)." target="_blank" class="wa-btn" style="justify-content: center;">
+                        <i class="fa-brands fa-whatsapp"></i> Marcar Telemedicina (WhatsApp)
+                    </a>
+                    <a href="https://www.doctoralia.com.br/andre-luis-moreira-duarte/endocrinologista-medico-clinico-geral-especialista-em-clinica-medica/campinas" target="_blank" class="cta-btn" style="justify-content: center; background-color: var(--primary);">
+                        Ver na Doctoralia
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Executa ao carregar e atualiza a cada 30 segundos
-        atualizarPainelTV();
-        setInterval(atualizarPainelTV, 30000);
-    </script>
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5519993963800?text=Olá%20Dr.%20André,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" class="floating-whatsapp" title="Fale conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dr. André Luis Moreira Duarte. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gold-light);">CRM-SP 163454 | RQE 81257 / 81256</p>
+    </footer>
+
 </body>
 </html>
