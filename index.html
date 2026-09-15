@@ -10,7 +10,7 @@
     
     <style>
         :root {
-            --primary: #0f172a;       /* Azul Marinho Profundo */
+            --primary: #0f172a;        /* Azul Marinho Profundo */
             --primary-light: #1e293b;  /* Azul Marinho Intermediário */
             --gold: #b89753;          /* Dourado Elegante */
             --gold-light: #d4af37;    /* Dourado Brilho */
@@ -349,6 +349,68 @@
             font-size: 0.95rem;
         }
 
+        /* Locations & Contact / Values */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold-bg);
+            border: 1px solid var(--gold);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .contact-box h3 {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-right: 80px;
+        }
+
+        .contact-box p {
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-box p i {
+            margin-top: 4px;
+            color: var(--gold);
+        }
+
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
         /* Avaliações / Depoimentos Section */
         .depoimentos-section {
             background-color: #f1f5f9;
@@ -362,7 +424,6 @@
         }
 
         .review-card {
-            background-color: #white;
             background: white;
             padding: 25px;
             border-radius: 12px;
@@ -469,68 +530,6 @@
 
         .btn-submit:hover {
             background-color: var(--gold);
-        }
-
-        /* Locations & Contact / Values */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .contact-box {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-left: 4px solid var(--primary);
-            position: relative;
-        }
-
-        .price-tag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gold-bg);
-            border: 1px solid var(--gold);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .contact-box h3 {
-            color: var(--primary);
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-right: 80px;
-        }
-
-        .contact-box p {
-            color: var(--gray);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-box p i {
-            margin-top: 4px;
-            color: var(--gold);
-        }
-
-        .card-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
         }
 
         /* Floating WhatsApp Widget */
@@ -707,39 +706,6 @@
         </div>
     </section>
 
-    <!-- Seção de Avaliações / Depoimentos -->
-    <section class="depoimentos-section" id="avaliacoes">
-        <div class="section-title">
-            <h2 id="titulo-depoimentos" title="Dê um duplo clique para gerenciar avaliações" style="cursor: pointer; user-select: none;">O que dizem os pacientes ⚙️</h2>
-            <p>(Dica: Dê um duplo clique no título acima caso precise apagar alguma avaliação indesejada)</p>
-        </div>
-
-        <!-- Lista Dinâmica de Avaliações -->
-        <div class="reviews-container" id="lista-avaliacoes">
-            <div class="review-card">
-                <p class="review-text">"Médico muito atencioso, paciente e detalhista. Conduz investigação a fundo para detectar real causa do problema antes de iniciar tratamento."</p>
-                <div class="review-author">— Avaliação de Paciente</div>
-            </div>
-        </div>
-
-        <!-- Formulário para Nova Avaliação -->
-        <div class="form-container">
-            <h3>Deixe sua avaliação</h3>
-            <p>Sua opinião é muito importante. Compartilhe sua experiência:</p>
-            <form id="form-avaliacao">
-                <div class="form-group">
-                    <label for="nome">Seu Nome:</label>
-                    <input type="text" id="nome" placeholder="Ex: Maria Silva" required>
-                </div>
-                <div class="form-group">
-                    <label for="mensagem">Sua Mensagem / Avaliação:</label>
-                    <textarea id="mensagem" placeholder="Escreva como foi sua experiência com o atendimento..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Publicar Avaliação</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Locais de Atendimento & Valores -->
     <section id="atendimento">
         <div class="section-title">
@@ -784,6 +750,39 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Seção de Avaliações / Depoimentos (Movida para o final, antes do rodapé) -->
+    <section class="depoimentos-section" id="avaliacoes">
+        <div class="section-title">
+            <h2 id="titulo-depoimentos" title="Dê um duplo clique para gerenciar avaliações" style="cursor: pointer; user-select: none;">O que dizem os pacientes ⚙️</h2>
+            <p>(Dica: Dê um duplo clique no título acima caso precise apagar alguma avaliação indesejada)</p>
+        </div>
+
+        <!-- Lista Dinâmica de Avaliações -->
+        <div class="reviews-container" id="lista-avaliacoes">
+            <div class="review-card">
+                <p class="review-text">"Médico muito atencioso, paciente e detalhista. Conduz investigação a fundo para detectar real causa do problema antes de iniciar tratamento."</p>
+                <div class="review-author">— Avaliação de Paciente</div>
+            </div>
+        </div>
+
+        <!-- Formulário para Nova Avaliação -->
+        <div class="form-container">
+            <h3>Deixe sua avaliação</h3>
+            <p>Sua opinião é muito importante. Compartilhe sua experiência:</p>
+            <form id="form-avaliacao">
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" placeholder="Ex: Maria Silva" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Sua Mensagem / Avaliação:</label>
+                    <textarea id="mensagem" placeholder="Escreva como foi sua experiência com o atendimento..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Publicar Avaliação</button>
+            </form>
         </div>
     </section>
 
