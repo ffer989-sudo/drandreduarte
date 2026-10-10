@@ -12,9 +12,9 @@
         :root {
             --primary: #0f172a;        /* Azul Marinho Profundo */
             --primary-light: #1e293b;  /* Azul Marinho Intermediário */
-            --gold: #b89753;          /* Dourado Elegante */
+            --gold: #b89753;           /* Dourado Elegante */
             --gold-light: #d4af37;    /* Dourado Brilho */
-            --gold-bg: #fdfbf7;       /* Fundo Levemente Dourado/Areia */
+            --gold-bg: #fdfbf7;        /* Fundo Levemente Dourado/Areia */
             --dark: #0f172a;
             --light: #f8fafc;
             --gray: #64748b;
@@ -445,20 +445,6 @@
             font-size: 14px;
         }
 
-        .btn-delete {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #ef4444;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            display: none;
-        }
-
         /* Formulário de Avaliação */
         .form-container {
             max-width: 700px;
@@ -753,14 +739,14 @@
         </div>
     </section>
 
-    <!-- Seção de Avaliações / Depoimentos (Movida para o final, antes do rodapé) -->
+    <!-- Seção de Avaliações / Depoimentos -->
     <section class="depoimentos-section" id="avaliacoes">
         <div class="section-title">
-            <h2 id="titulo-depoimentos" title="Dê um duplo clique para gerenciar avaliações" style="cursor: pointer; user-select: none;">O que dizem os pacientes ⚙️</h2>
-           
- </div>
+            <h2>O que dizem os pacientes</h2>
+            <p>Opiniões reais extraídas do perfil do Doctoralia</p>
+        </div>
 
-        <!-- Lista Dinâmica de Avaliações -->
+        <!-- Lista de Avaliações fixas e formatadas -->
         <div class="reviews-container" id="lista-avaliacoes">
             <div class="review-card">
                 <p class="review-text">"Rua Visconde de Taunay 420,Sala 26,Vila Itapura,Campinas13015093"</p>
@@ -797,30 +783,25 @@
         <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--gold-light);">CRM-SP 163454 | RQE 81257 / 81256</p>
     </footer>
 
-    <!-- Script de Gerenciamento de Avaliações -->
+    <!-- Script simples para adicionar novas avaliações digitadas pelo formulário -->
     <script>
-        const STORAGE_KEY = 'dr_andre_duarte_avaliacoes';
+        const STORAGE_KEY = 'dr_andre_duarte_avaliacoes_extras';
 
-        function carregarAvaliações() {
+        function carregarExtras() {
             const saved = localStorage.getItem(STORAGE_KEY);
-            let avaliacoes = saved ? JSON.parse(saved) : [
-                { nome: "Avaliação de Paciente", texto: "Médico muito atencioso, paciente e detalhista. Conduz investigação a fundo para detectar real causa do problema antes de iniciar tratamento." }
-            ];
-
+            if (!saved) return;
+            const extras = JSON.parse(saved);
             const container = document.getElementById('lista-avaliacoes');
-            container.innerHTML = '';
 
-            avaliacoes.forEach((item, index) => {
+            extras.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'review-card';
                 card.innerHTML = `
                     <p class="review-text">"${item.texto}"</p>
                     <div class="review-author">— ${item.nome}</div>
-                    <button class="btn-delete" onclick="apagarAvaliacao(${index})">Excluir</button>
                 `;
-                container.appendChild(card);
+                container.prepend(card);
             });
-            atualizarVisibilidadeBotoesExclusao();
         }
 
         document.getElementById('form-avaliacao').addEventListener('submit', function(e) {
@@ -831,42 +812,17 @@
             if (!nome || !mensagem) return;
 
             const saved = localStorage.getItem(STORAGE_KEY);
-            let avaliacoes = saved ? JSON.parse(saved) : [
-                { nome: "Avaliação de Paciente", texto: "Médico muito atencioso, paciente e detalhista. Conduz investigação a fundo para detectar real causa do problema antes de iniciar tratamento." }
-            ];
+            let extras = saved ? JSON.parse(saved) : [];
 
-            avaliacoes.unshift({ nome: nome, texto: mensagem });
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(avaliacoes));
+            extras.unshift({ nome: nome, texto: mensagem });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(extras));
 
             document.getElementById('form-avaliacao').reset();
-            carregarAvaliações();
             alert('Avaliação publicada com sucesso!');
+            location.reload();
         });
 
-        function apagarAvaliacao(index) {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (!saved) return;
-            let avaliacoes = JSON.parse(saved);
-            avaliacoes.splice(index, 1);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(avaliacoes));
-            carregarAvaliações();
-        }
-
-        let modoAdm = false;
-        document.getElementById('titulo-depoimentos').addEventListener('dblclick', function() {
-            modoAdm = !modoAdm;
-            atualizarVisibilidadeBotoesExclusao();
-            alert(modoAdm ? "Modo de gerenciamento ativado! Botões de exclusão visíveis." : "Modo de gerenciamento desativado.");
-        });
-
-        function atualizarVisibilidadeBotoesExclusao() {
-            const botoes = document.querySelectorAll('.btn-delete');
-            botoes.forEach(btn => {
-                btn.style.display = modoAdm ? 'block' : 'none';
-            });
-        }
-
-        window.onload = carregarAvaliações;
+        window.onload = carregarExtras;
     </script>
 </body>
 </html>
